@@ -9,8 +9,5 @@ class BaseLocators:
     ADD_BTN = "//button[@onclick='addElement()']"
     DELETE_BTN = "//button[text()='Delete']"
     DELETE_BTN_WITHOUT_BUTTON_CLASS_DELETE = "//div[@id='elements' and not(contains(@class, 'added-manually'))]"
-    ALL_IMAGES = "img"
     FIRST_BROKEN_IMG = ".example> img:nth-child(2)"
     SECOND_BROKEN_IMG = ".example> img:nth-child(3)"
-    THIRD_IMG = ".example> img:nth-child(4)"
-
