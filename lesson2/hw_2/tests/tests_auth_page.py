@@ -17,13 +17,10 @@ def test_authorization(driver):
                           ])
 def test_authorization_invalid_data(driver, login_value, password_value, expected_error_message):
     driver.get(BaseUrls.BASE_URL)
-
     login_field = driver.find_element(By.XPATH, AuthPage.USERNAME_FIELD)
     login_field.send_keys(login_value)
-
     password_field = driver.find_element(By.XPATH, AuthPage.PASSWORD_FIELD)
     password_field.send_keys(password_value)
-
     driver.find_element(By.XPATH, AuthPage.LOGIN_BUTTON).click()
 
     """username underline color"""
@@ -49,7 +46,7 @@ def test_authorization_invalid_data(driver, login_value, password_value, expecte
     """error container text"""
     warning_text = driver.find_element(By.XPATH, AuthPage.BOTH_USERNAME_PASSWORD_ERROR_MESSAGE)
     value_warring_text = warning_text.text
-    assert value_warring_text == expected_error_message
+    assert value_warring_text == "Epic sadface: Username and password do not match any user in this service"
 
     """error container color"""
     message_container = driver.find_element(By.CSS_SELECTOR, AuthPage.MESSAGE_ERROR_CONTAINER)
@@ -60,6 +57,5 @@ def test_authorization_invalid_data(driver, login_value, password_value, expecte
     warning_error_btn = driver.find_element(By.XPATH, AuthPage.MESSAGE_ERROR_BUTTON)
     assert warning_error_btn.is_displayed()
     assert warning_error_btn.is_enabled()
-
 
 
